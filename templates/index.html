@@ -74,7 +74,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6 col-12">
 					<div class="banner__content wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
-						<div class="banner__title">
+						<div id="pick" class="banner__title">
 							<h2>Pick a time</h2>
 							<p>Select a date and time to see the active region</p>
 						</div>
@@ -119,7 +119,7 @@
 													<option value="21">21</option>
 													<option value="22">22</option>
 													<option value="23">23</option>
-													<option value="24">24</option>
+													<option value="00">24</option>
 												</select>
 											</div>
 										</div>
@@ -159,35 +159,40 @@
 								<script>
 									function generate(){
 										// var fs = require('fs')
+										//event.preventDefault();
+
 										const harpnum = document.getElementById("harpnum").value;
 										const color_option = document.getElementById('color-scale').value;
 										const hour = document.getElementById('hour').value;
 										const minute = document.getElementById('minute').value;
 										const date = document.getElementById('date').value;
-										
+
 										const dict_values = {harpnum, color_option, hour, minute, date}
 										const s = JSON.stringify(dict_values)
 										$.ajax({
-											url:"/test",
-											type:"POST",
-											contentType: "application/json",
-											data: JSON.stringify(s)});
+										  url: "/test",
+										  type: "POST",
+										  data: JSON.stringify(s),
+										  contentType: "application/json",
+										  success: function(result) {
+										    //console.log("Result:", result);
+										    if (result == 0) {
+										    	alert("INVALID INPUT: NOT FOUND");
+										    }
+										  } 
+										});
+
 									}
 								</script>
-
-
 
 							</form>
 						</div>
 					</div>
 				</div>
-
 				<div class="col-lg-6 col-12">
 					<div class="banner__thumb banner__thumb--thumb1 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
-						<img id="imgage" src="static/images/banner/01.png" alt="banner">
+						<img id="update-img" src="{{url_for('static', filename='images/banner/01.png')}}" alt="banner">
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -267,7 +272,7 @@
 							<div class="work__item">
 								<div class="work__inner">
 									<div class="work__thumb">
-										<img src="{{url_for('static', filename='images/work/05.png')}}" alt="dating thumb">
+										<img src="{{url_for('static', filename='images/work/05.png')}}"" alt="dating thumb">
 									</div>
 									<div class="work__content">
 										<h3>Organize Data</h3>
@@ -377,15 +382,15 @@
 	</script>
 	<script>
 	window.onload = function() {
-    var image = document.getElementById("imgage");
+    var image = document.getElementById("update-img");
 
     function updateImage() {
         image.src = image.src.split("?")[0] + "?" + new Date().getTime();
     }
 
     setInterval(updateImage, 1000);
-}
-</script>
+	}
+	</script>
 	<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 </html>
