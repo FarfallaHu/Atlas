@@ -5,9 +5,15 @@ from bson.binary import Binary
 import sunpy.map
 import matplotlib.pyplot as plt
 from astropy.io import fits
+ 
 
+def generate_img(harp_num,date,hour,minute,color_option):
 
-def generate_img(harp_num,date,hour,minute,color_option='Grey'):
+    harp_num=Element('harp_num').element.value;
+    hour =Element('hour').elememt.value;
+    minute =Element('minute').elememt.value;
+    date =Element('date').elememt.value;
+    color_option =Element('color_option').elememt.value;
     client = pymongo.MongoClient("mongodb+srv://Annie:GSUADS123@cluster0.3e4grb6.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
     mydb = client["SolarImage"]
     collection = mydb.fits

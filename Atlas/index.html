@@ -6,11 +6,6 @@
 	<title>Atlas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Pyscript -->
-	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-
-
 	<!-- site favicon -->
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<!-- Place favicon.ico in the root directory -->
@@ -22,7 +17,8 @@
 	<link rel="stylesheet" href="assets/css/swiper.min.css">
 	<link rel="stylesheet" href="assets/css/lightcase.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-
+	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 
 <body>
@@ -86,7 +82,7 @@
 							<div class="col-12">
 								<div class="form-group">
 										<label>Date</label>
-										<input type="date" class="banner__inputlist">
+										<input type="date" class="banner__inputlist" id="date">
 								</div>
 							</div>
 						</div>
@@ -99,16 +95,16 @@
 									<div class="row">
 										<div class="col-6">
 											<div class="banner__inputlist">
-												<select>
-													<option value="01" selected>1</option>
-													<option value="02">2</option>
-													<option value="03">3</option>
-													<option value="04">4</option>
-													<option value="05">5</option>
-													<option value="06">6</option>
-													<option value="07">7</option>
-													<option value="08">8</option>
-													<option value="09">9</option>
+												<select id="hour">
+													<option value="1" selected>1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
 													<option value="10">10</option>
 													<option value="11">11</option>
 													<option value="12">12</option>
@@ -129,7 +125,7 @@
 										</div>
 										<div class="col-6">
 											<div class="banner__inputlist">
-												<select>
+												<select id="minute">
 													<option value="00">00</option>
 													<option value="12">12</option>
 													<option value="24">24</option>
@@ -140,7 +136,7 @@
 										</div>
 										<div class="form-group">
 												<label>HARP Number</label>
-												<input type="number" class="banner__inputlist" placeholder="1-4 Digits">
+												<input type="number" id="harp_num" class="banner__inputlist" placeholder="1-4 Digits">
 										</div>
 									</div>
 								</div>
@@ -157,7 +153,7 @@
 										</div>
 									</div>
 								</div>
-								<button type="submit" class="default-btn reverse d-block"><span>Generate</span></button>
+								<button type="submit" pys-onClick="generate_img" class="default-btn reverse d-block"><span>Generate</span></button>
 							</form>
 						</div>
 					</div>
@@ -386,5 +382,6 @@
 		ga('send', 'pageview')
 	</script>
 	<script src="https://www.google-analytics.com/analytics.js" async></script>
+	<script src="./app.js"></script>
 </body>
 </html>
