@@ -1,8 +1,21 @@
 from util import generate_img
+from PIL import Image
+import os
+import numpy as np
 
 import json
 from flask import request
 from flask import Flask, render_template, redirect, url_for
+
+
+if os.path.exists('./static/images/banner/01.png'):
+    os.remove('./static/images/banner/01.png')
+img = np.array([[[255,255,255,0],
+          [255,255,255,0],
+           [255,255,255,0]
+          ]])
+im = Image.fromarray(img, 'RGB')
+im.save("./static/images/banner/01.png")
 
 
 app = Flask(
@@ -58,6 +71,6 @@ def test():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 
