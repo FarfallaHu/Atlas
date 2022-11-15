@@ -175,14 +175,19 @@
 									}
 								</script>
 
+
+
 							</form>
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-6 col-12">
 					<div class="banner__thumb banner__thumb--thumb1 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
-						<img src="{{url_for('static', filename='images/banner/01.png')}}" alt="banner">
+						<img id="imgage" src="static/images/banner/01.png" alt="banner">
 					</div>
+
+
 				</div>
 			</div>
 		</div>
@@ -262,7 +267,7 @@
 							<div class="work__item">
 								<div class="work__inner">
 									<div class="work__thumb">
-										<img src="{{url_for('static', filename='images/work/05.png')}}"" alt="dating thumb">
+										<img src="{{url_for('static', filename='images/work/05.png')}}" alt="dating thumb">
 									</div>
 									<div class="work__content">
 										<h3>Organize Data</h3>
@@ -370,6 +375,17 @@
 		ga('set', 'transport', 'beacon');
 		ga('send', 'pageview')
 	</script>
+	<script>
+	window.onload = function() {
+    var image = document.getElementById("imgage");
+
+    function updateImage() {
+        image.src = image.src.split("?")[0] + "?" + new Date().getTime();
+    }
+
+    setInterval(updateImage, 1000);
+}
+</script>
 	<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 </html>
